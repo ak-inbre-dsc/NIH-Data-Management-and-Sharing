@@ -1,11 +1,11 @@
 name: dmp-finder
-title:
+title: dmp-finder
 username: dsc-ak-inbre
 account: dsc-ak-inbre
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 15321147
-bundleId: 10889597
+bundleId: 10909601
 url: https://dsc-ak-inbre.shinyapps.io/dmp-finder/
 version: 1
 asMultiple: FALSE
