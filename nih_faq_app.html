@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIH Data Management and Sharing Plan FAQ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .faq-item {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .faq-item:hover {
+            background-color: #e5e7eb;
+        }
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .answer.open {
+            max-height: 2000px; /* Increased to prevent content from being cut off */
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 md:p-10 relative">
+        <!-- Logo and Header Section -->
+        <div class="absolute top-6 left-6 md:static flex md:items-center mb-4 md:mb-0">
+            <img src="https://raw.githubusercontent.com/drownlab/dsc_workshop_2025/0d15c8fe8c083e5ce2f7320a3faf1f7e9d108aa5/assets/images/DSC_logo.png" alt="DSC Logo" class="w-24 md:w-32">
+            <header class="text-center md:text-left md:ml-4">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">NIH Data Management and Sharing Plan FAQ</h1>
+                <p class="text-gray-600">Find answers to common questions about the NIH DMS Policy.</p>
+            </header>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative mb-6">
+            <input type="search" id="search-input" placeholder="Search questions or keywords..."
+                   class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow text-gray-700">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- FAQ List Container -->
+        <div id="faq-list" class="space-y-4">
+            <!-- FAQ items will be dynamically generated here -->
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center text-gray-500 my-8">
+            <p>No results found for your search. Please try a different query.</p>
+        </div>
+    </div>
+
+    <script>
+        // Use a self-invoking function to avoid global variables
+        (function() {
+            // STEP 1: Paste your FAQ data here. Each object should have a 'question' and 'answer'.
+            const faqData = [
+                {
+                    question: "What is the purpose of the NIH Data Management and Sharing (DMS) Policy, and when did it become effective?",
+                    answer: "The NIH Data Management and Sharing (DMS) Policy, effective January 25, 2023, requires researchers to plan for and share scientific data from NIH-funded projects. The policy aims to accelerate biomedical discoveries by increasing data transparency, reproducibility, and accessibility for the research community and the public. It applies to all research that generates scientific data, regardless of the funding mechanism."
+                },
+                {
+                    question: "Who needs to submit a DMS Plan?",
+                    answer: "The principal investigator (PI) or project director is responsible for submitting a DMS Plan as part of their grant application or contract proposal."
+                },
+                {
+                    question: "Are there any exceptions to the DMS Plan requirement?",
+                    answer: "Yes, certain types of research, like training grants and fellowships that do not generate scientific data, are exempt. However, it's best to check with your specific NIH Institute or Center."
+                },
+                {
+                    question: "What are the key components required in a Data Management and Sharing (DMS) Plan?",
+                    answer: `A comprehensive DMS Plan, which is a mandatory submission for all applicants planning to generate scientific data, must address six key elements:
+                        <ol class="list-decimal list-inside space-y-1 mt-2">
+                            <li><b>Data Type:</b> Summarize the types and amount of scientific data to be generated/used, specify which data will be preserved and shared, and explain the reasoning for any data not shared (ethical, legal, technical factors). Also, list associated metadata and documentation necessary for interpretation.</li>
+                            <li><b>Related Tools, Software, and/or Code:</b> Indicate if specialized tools, software, or code are needed to access or manipulate the shared data for replication or reuse, and how they can be accessed.</li>
+                            <li><b>Standards:</b> Describe any standards (e.g., data formats, dictionaries, identifiers) that will be applied to the scientific data and associated metadata, encouraging the use of Common Data Elements (CDEs) for consistency.</li>
+                            <li><b>Data Preservation, Access, and Associated Timelines:</b> Name the repository(ies) where data will be archived, explain how data will be findable (e.g., persistent unique identifier), and state when and for how long the data will be made available (ideally as soon as possible, no later than publication or end of performance period).</li>
+                            <li><b>Access, Distribution, or Reuse Considerations:</b> Describe any factors affecting data access, distribution, or reuse, such as informed consent provisions, privacy/confidentiality protections, controlled access for human data, or legal/agreement restrictions.</li>
+                            <li><b>Oversight of Data Management and Sharing:</b> Indicate how the funded institution will monitor and manage compliance with the DMS Plan, including frequency and responsible parties (e.g., by title, roles).</li>
+                        </ol>
+                        <p class="mt-2">The DMS Plan is recommended to be two pages or less, submitted as a PDF without hypertext, and assessed by NIH program staff for completeness and reasonableness.</p>`
+                },
+                {
+                    question: "How should investigators budget for Data Management and Sharing activities in their NIH grant applications?",
+                    answer: "Investigators can budget for data management and sharing costs, such as data curation, documentation, de-identification, and data deposit fees. These costs must be incurred within the project's performance period. Unallowable costs include institutional overhead and routine data collection. A brief justification summarizing the data, repository, and costs must be included in the budget justification attachment."
+                },
+                {
+                    question: "What are the key considerations for selecting an appropriate data repository?",
+                    answer: `Selecting an appropriate data repository is crucial for ensuring data are Findable, Accessible, Interoperable, and Reusable (FAIR). When choosing a repository, researchers should consider factors such as data sensitivity, size, complexity, and anticipated volume of requests. Desired characteristics for all data repositories include:
+                        <ul class="list-disc list-inside space-y-1 mt-2">
+                            <li><b>Unique Persistent Identifiers:</b> Assigns citable DOIs or accession numbers.</li>
+                            <li><b>Long-Term Sustainability:</b> Has a plan for long-term data management, integrity, and authenticity.</li>
+                            <li><b>Metadata:</b> Ensures data are accompanied by appropriate, community-standard metadata.</li>
+                            <li><b>Curation and Quality Assurance:</b> Provides or facilitates expert curation.</li>
+                            <li><b>Free and Easy Access:</b> Offers broad, equitable, and maximally open access, consistent with ethical/legal limits.</li>
+                            <li><b>Broad and Measured Reuse:</b> Allows broadest possible terms of reuse with attribution.</li>
+                            <li><b>Clear Use Guidance:</b> Provides documentation on access and use terms.</li>
+                            <li><b>Security and Integrity:</b> Has documented measures to prevent unauthorized access or modification.</li>
+                            <li><b>Confidentiality:</b> Employs safeguards for sensitive data.</li>
+                            <li><b>Common Format:</b> Supports widely used, non-proprietary data formats.</li>
+                            <li><b>Provenance:</b> Records data origin, chain of custody, and modifications.</li>
+                            <li><b>Retention Policy:</b> Has documented data retention policies.</li>
+                        </ul>
+                        <p class="mt-2">For human data, additional considerations include: fidelity to consent, restricted use compliance (enforcing data use restrictions), privacy measures, a plan for data breaches, download controls, procedures for addressing violations, and a transparent request review process. NIH encourages using discipline or data-type-specific repositories first, or generalist/institutional repositories if a specialized one isn't available. Small datasets can sometimes be included as supplementary material for PubMed Central articles.</p>`
+                },
+                {
+                    question: "How long should data be preserved?",
+                    answer: "The NIH encourages data to be preserved for as long as it is useful to the scientific community, but at a minimum for the duration of the grant and for a reasonable period thereafter."
+                },
+                {
+                    question: "What are NIH's expectations regarding the timeliness of data sharing?",
+                    answer: `NIH expects scientific data to be made accessible as soon as possible to maximize its value and impact. Specifically, under the 2023 DMS Policy, scientific data must be shared by the earlier of these two timepoints:
+                        <ol class="list-decimal list-inside space-y-1 mt-2">
+                            <li><b>The time of an associated publication:</b> Data underlying peer-reviewed journal articles should be accessible no later than the date the article is first available in print or electronic format.</li>
+                            <li><b>The end of the performance period:</b> Data underlying findings not disseminated through peer-reviewed articles should be shared by the end of the grant's performance period. If a no-cost extension is granted, sharing should occur by the end of the extended period.</li>
+                        </ol>
+                        <p class="mt-2">Researchers should also be aware that some preprint servers or data repositories may require earlier public release of data upon preprint posting. Individual funding agreements or other policies for specific projects may impose even earlier data sharing timelines. NIH encourages researchers to make scientific data available for as long as it is anticipated to be useful for the broader research community.</p>`
+                },
+                {
+                    question: "What is the NIH Genomic Data Sharing (GDS) Policy, and how does it integrate with the DMS Policy?",
+                    answer: "The GDS Policy requires sharing of large-scale genomic data from NIH-funded research and has been harmonized with the new DMS Policy. This means a single plan must now satisfy both policies. Key requirements include providing an Institutional Certification for human data and timely submission to appropriate repositories."
+                },
+                {
+                    question: "What are the critical privacy and confidentiality considerations when sharing human scientific data, especially genomic data?",
+                    answer: `Protecting the privacy and confidentiality of human research participants is a paramount concern in data sharing. Investigators, their institutions, and Institutional Review Boards (IRBs) are responsible for safeguarding participant rights and data confidentiality. Key considerations and strategies include:
+                        <ul class="list-disc list-inside space-y-1 mt-2">
+                            <li><b>Informed Consent:</b> Discussions about data sharing, potential risks, and mitigation strategies should be an integral part of the informed consent process with research participants. Promises not to share data should be made sparingly and with adequate justification.</li>
+                            <li><b>De-identification:</b> Prior to sharing, direct and indirect identifiers must be removed from the data. Researchers should be particularly cautious with data from small geographic areas, rare populations, or linked datasets where re-identification risks are higher.</li>
+                            <li><b>Minimizing Disclosure Risks:</b> Adopt strategies to prevent unauthorized disclosure, potentially by statistically altering data in ways that protect identities without compromising secondary analyses, or by withholding parts of the data.</li>
+                            <li><b>Controlled Access:</b> For datasets that cannot be broadly distributed due to privacy, security, or other reasons, sharing through controlled-access repositories (data enclaves) or systems that restrict access to eligible researchers is an appropriate approach.</li>
+                            <li><b>Data Use Agreements:</b> For data shared under the auspices of the investigator or through controlled access, data use agreements should include conditions for protecting confidentiality, privacy, and prohibiting attempts at re-identification.</li>
+                            <li><b>Clinical Trials and HIPAA:</b> Investigators conducting clinical trials must carefully assess privacy risks related to study design and data collection, describing these and mitigation approaches in the informed consent. Those subject to HIPAA must comply with its Privacy Rule requirements for Protected Health Information.</li>
+                            <li><b>Genomic Data-Specific Consent:</b> For large-scale human genomic data from specimens collected after January 25, 2015, explicit informed consent for future research use and broad data sharing is expected. For older specimens, data from de-identified cell lines or clinical specimens lacking broad consent may be accepted.</li>
+                        </ul>`
+                },
+                {
+                    question: "What specific expectations do individual NIH Institutes and Centers (ICs) have for genomic data sharing, and why is this important?",
+                    answer: `While the overarching NIH Genomic Data Sharing (GDS) Policy provides a general framework, individual NIH Institutes and Centers (ICs) may have additional, specific expectations or requirements for projects generating large-scale genomic data. These IC-specific expectations can cover various aspects, including:
+                        <ul class="list-disc list-inside space-y-1 mt-2">
+                            <li><b>Policy Applicability:</b> Some ICs, like NHGRI or NIDCR, may apply the GDS Policy more broadly (e.g., to all human genetics/genomics studies regardless of participant number, or to specific rare diseases/populations).</li>
+                            <li><b>Informed Consent:</b> While NIH generally expects informed consent for broad sharing for specimens collected after January 25, 2015, some ICs like NHGRI require explicit consent regardless of collection date, or an approved exception. Others may have specific points to consider in consent for sensitive areas (e.g., NIMH).</li>
+                            <li><b>Sharing Plan Requirements:</b> Some ICs may have their own GDS plan templates or require additional details in the harmonized DMS Plan (e.g., NHLBI, NHGRI, NIDA's expectation for DOIs and Resource Identifiers).</li>
+                            <li><b>Data Submission & Release:</b> While general timelines exist, some ICs have specific repository preferences or requirements for certain data types (e.g., NIA expects biological and phenotypic data at NCRAD and genomic data at NIAGADS; NIMH expects data at the NIMH Data Archive (NDA)). NIDCD expects all genomic/transcriptomic data deposited in a public database at publication.</li>
+                        </ul>
+                        <p class="mt-2">It is crucial for investigators to consult with a Program Officer (extramural) or Scientific Director (intramural) from their funding IC early in the planning process to understand all applicable requirements. This ensures that their Data Management and Sharing Plan (which now integrates GDS considerations) aligns with both the general NIH policies and any specific IC-level mandates, thereby facilitating compliance and successful funding.</p>`
+                }
+            ];
+
+            // Get DOM elements
+            const searchInput = document.getElementById('search-input');
+            const faqList = document.getElementById('faq-list');
+            const noResultsMessage = document.getElementById('no-results');
+
+            /**
+             * Renders the FAQ items to the page.
+             * @param {Array<Object>} items - The array of FAQ objects to display.
+             */
+            const renderFaqs = (items) => {
+                faqList.innerHTML = ''; // Clear existing content
+                if (items.length === 0) {
+                    noResultsMessage.classList.remove('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                    items.forEach((item, index) => {
+                        const faqItemDiv = document.createElement('div');
+                        faqItemDiv.className = 'faq-item bg-gray-50 p-6 rounded-xl border border-gray-200';
+                        faqItemDiv.innerHTML = `
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-medium text-lg text-gray-800">${item.question}</h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-500 transition-transform transform">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+                            <div class="answer text-gray-600 pt-0 text-sm md:text-base">
+                                ${item.answer}
+                            </div>
+                        `;
+                        
+                        faqItemDiv.addEventListener('click', () => {
+                            const answerDiv = faqItemDiv.querySelector('.answer');
+                            const icon = faqItemDiv.querySelector('svg');
+                            const isOpen = answerDiv.classList.toggle('open');
+                            icon.style.transform = isOpen ? 'rotate(45deg)' : 'rotate(0deg)';
+                        });
+
+                        faqList.appendChild(faqItemDiv);
+                    });
+                }
+            };
+
+            /**
+             * Filters the FAQ data based on the search input value.
+             */
+            const filterFaqs = () => {
+                const query = searchInput.value.toLowerCase();
+                const filtered = faqData.filter(item =>
+                    item.question.toLowerCase().includes(query) || item.answer.toLowerCase().includes(query)
+                );
+                renderFaqs(filtered);
+            };
+
+            // Event listener for the search input
+            searchInput.addEventListener('input', filterFaqs);
+
+            // Initial render of all FAQs on page load
+            renderFaqs(faqData);
+        })();
+    </script>
+</body>
+</html>
