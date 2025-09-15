@@ -3,8 +3,19 @@ library(dplyr)
 library(DT)
 library(stringr)
 
-# Load CSV
-# NOTE: This assumes 'Sample_DMS.csv' is in the same directory as this app.R file.
+# --- IMPORTANT: Change file paths to be relative to this app.R file ---
+
+# The app can only see files in its own directory on the server.
+# To make this simple, all assets (logos, CSV) should be in the same folder.
+# For example: R-shiny/dmp-finder/app.R
+#                          |
+#                          -- assets/
+#                          |    -- images/
+#                          |         -- DSC_logo.png
+#                          |         -- INBRE_logo.png
+#                          -- Sample_DMS.csv
+
+# Load CSV using a relative path
 plans <- read.csv("Sample_DMS.csv", stringsAsFactors = FALSE)
 
 # --- Clean and expand multi-value fields ---
@@ -160,10 +171,12 @@ ui <- fluidPage(
   # A flexbox container to hold the logos and the title
   div(class = "header-container",
       div(class = "logo-left", 
+          # Update the path to the DSC logo
           tags$img(src = "DSC_logo.png", alt = "DSC Logo")
       ),
       div(class = "title", tags$h1("Examples: Data Management & Sharing Plan", class = "app-title")),
       div(class = "logo-right", 
+          # Update the path to the INBRE logo
           tags$img(src = "INBRE_logo.png", alt = "INBRE Logo")
       )
   ),
@@ -262,7 +275,11 @@ server <- function(input, output, session) {
     selected <- input$table_rows_selected
     if (length(selected) == 0) return(NULL)
     
-    file <- df$Link[selected]
+    # Path to the PDF document
+    # Shiny automatically serves files from the 'www' folder.
+    # The 'www' folder acts as the web root, so we don't need to include it in the path.
+    # We just need to specify the path relative to 'www', in this case, 'documents'.
+    file <- df$Link[selected] 
     tags$iframe(src = file, width = "100%", height = "600px", style = "border:none;")
   })
 }
