@@ -1,2 +1,18 @@
-# Mac OS files
+# Ignore directories with example or temporary files
+Example plans/
+DMS_v1.docx
+NIH Data management plans-summary.docx
+NIH Data management plans.docx
+Sample_DMS.xlsx
+
+# Ignore the R-Shiny specific connection folder
+R-shiny/rsconnect/
+
+#Ignore R-Shiny project and temporary files
+R-shiny/.Rproj.user/
+R-shiny/.Rhistory
+R-shiny/.RData
+R-shiny/.Rprofile
+
+# Ignore Mac OS specific files
 .DS_Store
