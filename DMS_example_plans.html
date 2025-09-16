@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples: Data Management & Sharing Plan</title>
+    <!-- Tailwind CSS for modern, professional styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+        
+        /* Custom CSS to match the R-Shiny app's styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f4f8; /* Light gray-blue background */
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .app-title {
+            color: #003366;
+            font-weight: 700;
+            font-size: 35px;
+            text-align: center;
+        }
+        .sidebar-panel {
+            background-color: #e3f2fd; /* Lighter blue */
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h4 {
+            color: #004080;
+            border-bottom: 2px solid #b3d9ff;
+            padding-bottom: 5px;
+            margin-top: 25px;
+            font-weight: 700;
+        }
+        .form-control, .selectize-input {
+            border-radius: 5px;
+            border-color: #90caf9;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .iframe-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .logo-left img {
+            height: 140px;
+        }
+        .logo-right img {
+            height: 100px;
+        }
+        /* Style for the dynamic table */
+        #results-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #results-table th, #results-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        #results-table th {
+            background-color: #b3d9ff;
+            color: #003366;
+            font-weight: 700;
+        }
+        #results-table tbody tr:nth-child(even) {
+            background-color: #f4f9ff;
+        }
+        #results-table tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        #results-table tbody tr.selected {
+            background-color: #cce5ff;
+            font-weight: 600;
+        }
+        #results-table tbody tr:hover {
+            background-color: #e9f5ff;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-10">
+
+    <!-- Header with Logos -->
+    <div class="header-container max-w-7xl mx-auto">
+        <div class="logo-left">
+            <img src="assets/images/DSC_logo.png" alt="DSC Logo" class="logo">
+        </div>
+        <h1 class="app-title flex-grow">Examples: Data Management & Sharing Plan</h1>
+        <div class="logo-right">
+            <img src="assets/images/INBRE_logo.png" alt="INBRE Logo" class="logo">
+        </div>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto">
+        <!-- Sidebar Panel -->
+        <aside class="sidebar-panel md:w-1/4">
+            <h4>Filters</h4>
+            <div class="shiny-input-container mt-4">
+                <label for="subject-select" class="block text-sm font-medium text-gray-700">Subject Type:</label>
+                <select id="subject-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <div class="shiny-input-container">
+                <label for="institute-select" class="block text-sm font-medium text-gray-700">Institute:</label>
+                <select id="institute-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <div class="shiny-input-container">
+                <label for="clinical-select" class="block text-sm font-medium text-gray-700">Clinical/Non-Clinical:</label>
+                <select id="clinical-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <div class="shiny-input-container">
+                <label for="research-select" class="block text-sm font-medium text-gray-700">Research Area:</label>
+                <select id="research-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <div class="shiny-input-container">
+                <label for="psdata-select" class="block text-sm font-medium text-gray-700">Primary/Secondary Data Used:</label>
+                <select id="psdata-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <div class="shiny-input-container">
+                <label for="datatype-select" class="block text-sm font-medium text-gray-700">Data Type:</label>
+                <select id="datatype-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <div class="shiny-input-container">
+                <label for="date-select" class="block text-sm font-medium text-gray-700">Year Created:</label>
+                <select id="date-select" class="form-control mt-1 block w-full rounded-md shadow-sm border-gray-300"></select>
+            </div>
+            <button id="reset-filters" class="btn-primary w-full mt-4">Reset Filters</button>
+            <div class="text-right text-xs text-gray-500 mt-4" id="last-updated"></div>
+        </aside>
+
+        <!-- Main Panel -->
+        <main class="main-panel-container flex-grow">
+            <h4 class="mb-4">Matching Plans</h4>
+            <div class="overflow-x-auto bg-white rounded-md shadow-sm p-4">
+                <table id="results-table">
+                    <thead>
+                        <tr>
+                            <th>Subject Type</th>
+                            <th>Institute</th>
+                            <th>Clinical/Non-Clinical</th>
+                            <th>Research Area</th>
+                            <th>Primary/Secondary Data Used</th>
+                            <th>Data Type</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="mt-6 mb-4">Document Viewer</h4>
+            <div class="iframe-container">
+                <iframe id="doc-viewer" width="100%" height="600px" style="border:none;"></iframe>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            // Hard-coded data mirroring the structure of your CSV and file paths
+            const dmsPlans = [
+                { "Subject.Type": "Human", "Institute": "NIAID", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Epidemiology, Public Health", "Primary.Secondary.Data.used": "Primary, Secondary", "Data.Type": "Epidemiological Data, Public Health Data", "Link": "example_plans/NIA_BSR_EHR_Data_MS_Plan_Example_final.pdf", "Date": "2023" },
+                { "Subject.Type": "Human, Primate", "Institute": "NIAID", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Clinical Trial", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Clinical Trial Data", "Link": "example_plans/NIA_BSR_Primate_Data_DMS_Plan_Example_final.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIMH", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Neuroimaging, Clinical Research", "Primary.Secondary.Data.used": "Primary", "Data.Type": "MRI, Clinical Assessments", "Link": "example_plans/NIMH_Human MRI and Clinical Assessments_Template_v3.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIDDK", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Clinical Research", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Clinical Data", "Link": "example_plans/PI-E01BNIDDKDMSPlanExampleClinical.pdf", "Date": "2023" },
+                { "Subject.Type": "Human, Primate", "Institute": "NIA", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Behavioral & Social Sciences, Longitudinal Study", "Primary.Secondary.Data.used": "Primary, Secondary", "Data.Type": "Longitudinal Data", "Link": "example_plans/NIA_BSR_Longitudinal_Restricted_Access_DMS_Plan_Example_final.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIDDK", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Secondary Data Analysis", "Primary.Secondary.Data.used": "Secondary", "Data.Type": "Clinical Data", "Link": "example_plans/PI-E01DNIDDKDMSPlanExampleSecondaryAnalysis.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIMH", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Genomics", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Genomic Data", "Link": "example_plans/NIMH_Human-Genomic_Template_v3.pdf", "Date": "2023" },
+                { "Subject.Type": "Mouse", "Institute": "NIMH", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Genomics", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Genomic Data", "Link": "example_plans/NIMH_Mouse-Genomic-Template_v3.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIMH", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Secondary Data Analysis", "Primary.Secondary.Data.used": "Secondary", "Data.Type": "Clinical Data", "Link": "example_plans/NIMH_Secondary-Data-Analysis_Template_v3.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIA", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Survey Data", "Primary.Secondary.Data.used": "Primary, Secondary", "Data.Type": "Survey Data, Interview Data", "Link": "example_plans/Survey-and-Interview-Data_Sample-DMS-Plan_05222023_1.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIA", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Secondary Data Analysis", "Primary.Secondary.Data.used": "Secondary", "Data.Type": "Clinical Data", "Link": "example_plans/NIA_DN_Secondary_data_analysis.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIA", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Clinical Intervention", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Clinical Data", "Link": "example_plans/NIA_DN_Clinical_Interventions_DMS_Plan_Example_final.pdf", "Date": "2023" },
+                { "Subject.Type": "Zebrafish", "Institute": "NIA", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Animal Model", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Animal Data", "Link": "example_plans/ExampleDMSPlan_NonHuman_Zebrafish_NIHFormatPage_v2.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NHGRI", "Clinical.Non-Clinical": "Clinical", "Research.Area": "Genomics", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Genomic Data, Clinical Data", "Link": "example_plans/Human-Genomic-Data_NHGRI_Sample-DMS-Plan_v1.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NCI", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Social Media Research", "Primary.Secondary.Data.used": "Secondary", "Data.Type": "Social Media Data", "Link": "example_plans/NCI-Social-Media-Sample-DMS-Plan_0.pdf", "Date": "2023" },
+                { "Subject.Type": "Human", "Institute": "NIA", "Clinical.Non-Clinical": "Non-Clinical", "Research.Area": "Genomics", "Primary.Secondary.Data.used": "Primary", "Data.Type": "Genomic Data", "Link": "example_plans/NIA_DN_AD_Human_Genomic_DMS_Plan_Example_final.pdf", "Date": "2023" }
+            ];
+            
+            // --- DOM Element References ---
+            const selectSubject = document.getElementById('subject-select');
+            const selectInstitute = document.getElementById('institute-select');
+            const selectClinical = document.getElementById('clinical-select');
+            const selectResearch = document.getElementById('research-select');
+            const selectPsdata = document.getElementById('psdata-select');
+            const selectDatatype = document.getElementById('datatype-select');
+            const selectDate = document.getElementById('date-select');
+            const resetButton = document.getElementById('reset-filters');
+            const tableBody = document.querySelector('#results-table tbody');
+            const docViewer = document.getElementById('doc-viewer');
+            const lastUpdatedDiv = document.getElementById('last-updated');
+            
+            const allSelects = [
+                selectSubject, selectInstitute, selectClinical, selectResearch,
+                selectPsdata, selectDatatype, selectDate
+            ];
+
+            // --- Utility Functions ---
+
+            /**
+             * Populates a select element with options based on a given data field.
+             * @param {HTMLElement} selectElement - The HTML select element.
+             * @param {string} dataField - The key from the data objects to use for options.
+             */
+            const populateSelect = (selectElement, dataField) => {
+                const uniqueValues = new Set();
+                dmsPlans.forEach(plan => {
+                    // Handle comma-separated fields like Research.Area and Data.Type
+                    const values = plan[dataField].split(',').map(v => v.trim());
+                    values.forEach(v => {
+                        if (v !== "") uniqueValues.add(v);
+                    });
+                });
+                
+                // Convert Set to Array and sort
+                const sortedValues = [...uniqueValues].sort();
+
+                selectElement.innerHTML = '';
+                selectElement.multiple = true; // Set to multiselect
+                
+                // Add an empty option for a clear default state
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'All';
+                defaultOption.selected = true;
+                selectElement.appendChild(defaultOption);
+
+                sortedValues.forEach(value => {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = value;
+                    selectElement.appendChild(option);
+                });
+            };
+
+            /**
+             * Renders the filtered plans into the HTML table.
+             * @param {Array<Object>} filteredPlans - The array of plans to display.
+             */
+            const renderTable = (filteredPlans) => {
+                tableBody.innerHTML = '';
+                if (filteredPlans.length === 0) {
+                    const noResultsRow = document.createElement('tr');
+                    noResultsRow.innerHTML = `<td colspan="7" class="text-center text-gray-500 py-4">No plans found. Please adjust your filters.</td>`;
+                    tableBody.appendChild(noResultsRow);
+                } else {
+                    filteredPlans.forEach((plan, index) => {
+                        const row = document.createElement('tr');
+                        row.dataset.url = plan.Link;
+                        row.innerHTML = `
+                            <td>${plan["Subject.Type"]}</td>
+                            <td>${plan.Institute}</td>
+                            <td>${plan["Clinical.Non-Clinical"]}</td>
+                            <td>${plan["Research.Area"]}</td>
+                            <td>${plan["Primary.Secondary.Data.used"]}</td>
+                            <td>${plan["Data.Type"]}</td>
+                            <td><a href="${plan.Link}" target="_blank" class="text-blue-600 hover:underline">View</a></td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }
+            };
+            
+            /**
+             * Filters the data based on selected options in the dropdowns.
+             * @returns {Array<Object>} The filtered array of plans.
+             */
+            const filterData = () => {
+                let filtered = [...dmsPlans];
+
+                const getSelectedValues = (selectElement) => {
+                    const selected = Array.from(selectElement.options)
+                        .filter(option => option.selected && option.value !== '')
+                        .map(option => option.value);
+                    return selected;
+                };
+
+                const subjectValues = getSelectedValues(selectSubject);
+                if (subjectValues.length > 0) {
+                    filtered = filtered.filter(plan => subjectValues.includes(plan["Subject.Type"]));
+                }
+
+                const instituteValues = getSelectedValues(selectInstitute);
+                if (instituteValues.length > 0) {
+                    filtered = filtered.filter(plan => instituteValues.includes(plan.Institute));
+                }
+
+                const clinicalValues = getSelectedValues(selectClinical);
+                if (clinicalValues.length > 0) {
+                    filtered = filtered.filter(plan => clinicalValues.includes(plan["Clinical.Non-Clinical"]));
+                }
+
+                const researchValues = getSelectedValues(selectResearch);
+                if (researchValues.length > 0) {
+                    filtered = filtered.filter(plan => {
+                        const planAreas = plan["Research.Area"].split(',').map(s => s.trim());
+                        return researchValues.some(val => planAreas.includes(val));
+                    });
+                }
+
+                const psdataValues = getSelectedValues(selectPsdata);
+                if (psdataValues.length > 0) {
+                    filtered = filtered.filter(plan => psdataValues.includes(plan["Primary.Secondary.Data.used"]));
+                }
+
+                const datatypeValues = getSelectedValues(selectDatatype);
+                if (datatypeValues.length > 0) {
+                    filtered = filtered.filter(plan => {
+                        const planTypes = plan["Data.Type"].split(',').map(s => s.trim());
+                        return datatypeValues.some(val => planTypes.includes(val));
+                    });
+                }
+
+                const dateValues = getSelectedValues(selectDate);
+                if (dateValues.length > 0) {
+                    filtered = filtered.filter(plan => dateValues.includes(plan.Date));
+                }
+
+                return filtered;
+            };
+
+            // --- Event Handlers ---
+            const handleSelectChange = () => {
+                const filteredPlans = filterData();
+                renderTable(filteredPlans);
+                // Clear the iframe if a filter is changed
+                docViewer.src = '';
+            };
+
+            const handleTableClick = (event) => {
+                // Find the closest row (tr) to the clicked element
+                const row = event.target.closest('tr');
+                if (row && row.dataset.url) {
+                    // Remove 'selected' class from all rows
+                    document.querySelectorAll('#results-table tbody tr').forEach(r => r.classList.remove('selected'));
+                    // Add 'selected' class to the clicked row
+                    row.classList.add('selected');
+                    // Update the iframe source
+                    docViewer.src = row.dataset.url;
+                }
+            };
+
+            const handleReset = () => {
+                allSelects.forEach(select => {
+                    Array.from(select.options).forEach(option => {
+                        option.selected = option.value === '';
+                    });
+                });
+                handleSelectChange();
+            };
+
+            // --- Initialization ---
+            const initializeApp = () => {
+                // Populate all select elements
+                populateSelect(selectSubject, "Subject.Type");
+                populateSelect(selectInstitute, "Institute");
+                populateSelect(selectClinical, "Clinical.Non-Clinical");
+                populateSelect(selectResearch, "Research.Area");
+                populateSelect(selectPsdata, "Primary.Secondary.Data.used");
+                populateSelect(selectDatatype, "Data.Type");
+                populateSelect(selectDate, "Date");
+
+                // Set up event listeners
+                allSelects.forEach(select => {
+                    select.addEventListener('change', handleSelectChange);
+                });
+                resetButton.addEventListener('click', handleReset);
+                tableBody.addEventListener('click', handleTableClick);
+
+                // Display the last updated date
+                const lastUpdated = new Date().toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+                lastUpdatedDiv.textContent = `Last Updated: ${lastUpdated}`;
+
+                // Initial render of the table
+                renderTable(dmsPlans);
+            };
+
+            initializeApp();
+        })();
+    </script>
+</body>
+</html>
