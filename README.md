@@ -1,4 +1,4 @@
-# NIH Data Management and Sharing Plan Checklist
+# NIH Data Management and Sharing Plan Information
 
 This project is an interactive, web-based checklist designed to assist researchers in creating a comprehensive Data Management and Sharing (DMS) Plan in compliance with the **NIH Data Management and Sharing Policy (2025)**.
 
