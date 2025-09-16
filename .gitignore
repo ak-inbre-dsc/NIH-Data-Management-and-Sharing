@@ -5,6 +5,7 @@ NIH Data management plans.docx
 Sample_DMS.xlsx
 
 # Ignore the R-Shiny folder
+R-shiny
 
 # Ignore Mac OS specific files
 .DS_Store
