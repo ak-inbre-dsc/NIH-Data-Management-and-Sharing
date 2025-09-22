@@ -38,56 +38,73 @@
         .external-link-icon:hover {
             transform: scale(1.1);
         }
-        /* Hide elements when printing */
+        /* Hide elements and adjust font sizes for printing */
         @media print {
             .print-hidden,
             .external-link-icon {
                 display: none;
             }
 
-            .container {
-                max-width: 100%;
-                box-shadow: none;
-                padding: 0;
-                margin: 0;
-            }
-
             body {
                 background-color: white;
                 color: black;
+                font-size: 10pt;
+                /* Adjust body to fill page and remove centering */
+                display: block !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .container {
+                max-width: 100% !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+            
+            p {
+                font-size: 0.85rem;
+            }
+
+            .checklist-item label {
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col items-center justify-center p-4">
     <div class="container bg-white shadow-xl rounded-2xl p-8 md:p-12 mt-8 mb-8">
-        <!-- Header with Logos and Title -->
-        <div class="flex items-center justify-between gap-4 mb-6 print-hidden">
-            <img src="assets/images/DSC_logo.png" alt="DSC Logo" class="h-36">
+        <!-- Main header section with a single title for screen and print -->
+        <div class="flex items-center justify-between gap-4 mb-6">
+            <!-- Logos and print icon are now individually hidden for print -->
+            <img src="assets/images/DSC_logo.png" alt="DSC Logo" class="h-36 print-hidden">
             <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 flex-grow text-center">
                 NIH Data Management and Sharing Plan Checklist
-                <a href="javascript:void(0);" onclick="window.print()" class="text-blue-600 hover:text-blue-800 ml-2">
+                <a href="javascript:void(0);" onclick="window.print()" class="text-blue-600 hover:text-blue-800 ml-2 print-hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 inline-block">
                         <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
                     </svg>
                 </a>
             </h1>
-            <img src="assets/images/INBRE_logo.png" alt="INBRE Logo" class="h-36">
+            <img src="assets/images/INBRE_logo.png" alt="INBRE Logo" class="h-36 print-hidden">
         </div>
-        
-        <!-- Header for Print -->
-        <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 flex-grow text-center">
-            NIH Data Management and Sharing Plan Checklist
-        </h1>
 
-        <!-- Main Content -->
+        <!-- Introductory paragraphs, hidden when printing -->
         <div class="text-base md:text-lg leading-relaxed text-gray-600 print-hidden">
             <p class="mb-4">
                 A Data Management and Sharing (DMS) Plan must contain the six elements below. A blank DMS format template can be downloaded <a href="https://grants.nih.gov/sites/default/files/uploaded/DMS-Plan-blank-format-page.docx" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">here</a>. For example DMS plans you can use the <a href="DMS_example_plans.html" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">DMS Example Plan Finder tool</a>. Please note that sample DMS Plans may include expectations beyond the general Data Management and Sharing Plan Policy. For common inquiries about DMS plans, see our <a href="nih_faq_app.html" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">FAQ</a>.
             </p>
             <p class="mb-8">
                 The checklist below includes general requirements identified on the <a href="https://sharing.nih.gov/data-management-and-sharing-policy" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">NIH Data Management & Sharing Plan website</a>. Prior to submission, review the NIH instructions in full for <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/other/ics-sharing-policies" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">additional elements</a>
- that may be required for your specific institute or research topic. If directions are unclear on the NIH website, please contact your relevant program officer.
+                that may be required for your specific institute or research topic. If directions are unclear on the NIH website, please contact your relevant program officer.
             </p>
         </div>
 
