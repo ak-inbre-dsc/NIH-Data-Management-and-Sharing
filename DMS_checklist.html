@@ -25,6 +25,19 @@
             height: 1.25rem;
             accent-color: #3b82f6; /* Tailwind's blue-500 */
         }
+        /* Custom styling for the external link icon */
+        .external-link-icon {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            fill: currentColor;
+            transition: transform 0.2s ease-in-out;
+        }
+        .external-link-icon:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col items-center justify-center p-4">
@@ -49,9 +62,10 @@
         </div>
 
         <!-- Element 1 -->
-        <h2 class="text-2xl font-bold text-blue-800 mt-6 mb-2">
-            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=Format%20Attachments%20page.-,1.%20Data%20Type,-Briefly%20describe%20the" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">
-                Element 1: Data Type
+        <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-2 flex items-center">
+            <span>Element 1: Data Type</span>
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=Format%20Attachments%20page.-,1.%20Data%20Type,-Briefly%20describe%20the" target="_blank" class="text-blue-700 hover:text-blue-800">
+                <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 15.83 9.17 17.24 19 7.41V11h2V3h-7z"/></svg>
             </a>
         </h2>
         <p class="text-base md:text-lg leading-relaxed text-gray-600 mb-4">
@@ -85,9 +99,10 @@
         </div>
 
         <!-- Element 2 -->
-        <h2 class="text-2xl font-bold text-blue-800 mt-6 mb-2">
-            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=2.%20Related%20Tools%2C%20Software%2C%20and/or%20Code" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">
-                Element 2: Related Tools, Software, and/or Code
+        <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-2 flex items-center">
+            <span>Element 2: Related Tools, Software, and/or Code</span>
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=2.%20Related%20Tools%2C%20Software%2C%20and/or%20Code" target="_blank" class="text-blue-700 hover:text-blue-800">
+                <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 15.83 9.17 17.24 19 7.41V11h2V3h-7z"/></svg>
             </a>
         </h2>
         <p class="text-base md:text-lg leading-relaxed text-gray-600 mb-4">
@@ -113,9 +128,10 @@
         </div>
         
         <!-- Element 3 -->
-        <h2 class="text-2xl font-bold text-blue-800 mt-6 mb-2">
-            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=can%20be%20accessed.-,3.%20Standards,-Describe%20what%20standards" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">
-                Element 3: Standards
+        <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-2 flex items-center">
+            <span>Element 3: Standards</span>
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=can%20be%20accessed.-,3.%20Standards,-Describe%20what%20standards" target="_blank" class="text-blue-700 hover:text-blue-800">
+                <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 15.83 9.17 17.24 19 7.41V11h2V3h-7z"/></svg>
             </a>
         </h2>
         <p class="text-base md:text-lg leading-relaxed text-gray-600 mb-4">
@@ -137,9 +153,10 @@
         </div>
 
         <!-- Element 4 -->
-        <h2 class="text-2xl font-bold text-blue-800 mt-6 mb-2">
-            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=4.%20Data%20Preservation%2C%20Access%2C%20and%20Timelines" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">
-                Element 4: Data Preservation, Access, and Timelines
+        <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-2 flex items-center">
+            <span>Element 4: Data Preservation, Access, and Timelines</span>
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=4.%20Data%20Preservation%2C%20Access%2C%20and%20Timelines" target="_blank" class="text-blue-700 hover:text-blue-800">
+                <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 15.83 9.17 17.24 19 7.41V11h2V3h-7z"/></svg>
             </a>
         </h2>
         <p class="text-base md:text-lg leading-relaxed text-gray-600 mb-4">
@@ -165,9 +182,10 @@
         </div>
 
         <!-- Element 5 -->
-        <h2 class="text-2xl font-bold text-blue-800 mt-6 mb-2">
-            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=5.%20Access%2C%20Distribution%2C%20or%20Reuse%20Considerations" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">
-                Element 5: Access, Distribution, or Reuse Considerations
+        <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-2 flex items-center">
+            <span>Element 5: Access, Distribution, or Reuse Considerations</span>
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=5.%20Access%2C%20Distribution%2C%20or%20Reuse%20Considerations" target="_blank" class="text-blue-700 hover:text-blue-800">
+                <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 15.83 9.17 17.24 19 7.41V11h2V3h-7z"/></svg>
             </a>
         </h2>
         <p class="text-base md:text-lg leading-relaxed text-gray-600 mb-4">
@@ -193,9 +211,10 @@
         </div>
 
         <!-- Element 6 -->
-        <h2 class="text-2xl font-bold text-blue-800 mt-6 mb-2">
-            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=6.%20Oversight%20of%20Data%20Management%20and%20Sharing" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">
-                Element 6: Oversight of Data Management and Sharing
+        <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-2 flex items-center">
+            <span>Element 6: Oversight of Data Management and Sharing</span>
+            <a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=6.%20Oversight%20of%20Data%20Management%20and%20Sharing" target="_blank" class="text-blue-700 hover:text-blue-800">
+                <svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59L7.76 15.83 9.17 17.24 19 7.41V11h2V3h-7z"/></svg>
             </a>
         </h2>
         <p class="text-base md:text-lg leading-relaxed text-gray-600 mb-4">
