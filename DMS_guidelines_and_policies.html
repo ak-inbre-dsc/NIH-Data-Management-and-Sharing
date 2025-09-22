@@ -9,16 +9,21 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        .icon-align {
+            position: relative;
+            top: 2px;
+        }
     </style>
 </head>
 <body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col items-center p-4">
     <div class="container bg-white shadow-xl rounded-2xl p-8 md:p-12 my-8 max-w-4xl">
         <!-- Header with DSC Logo and Title -->
-        <div class="flex items-center gap-4 mb-6">
+        <div class="flex items-center justify-between gap-4 mb-6">
             <img src="assets/images/DSC_logo.png" alt="DSC Logo" class="h-24">
             <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 flex-grow text-center">
                 Data Management & Sharing (DMS): Definitions & Core Requirements
             </h1>
+            <img src="assets/images/NIH_logo.png" alt="NIH Logo" class="h-24">
         </div>
 
         <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6">
@@ -26,22 +31,36 @@
         </p>
         
         <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-3">1. Key Definitions</h2>
-        <ul class="list-disc list-inside text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-4">
-            <li><b class="font-semibold"><a href="https://www.grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/data-management" class="text-blue-700 font-bold hover:underline" target="_blank">Data Management</a>:</b> This is the process of validating, organizing, protecting, maintaining, and processing scientific data to ensure its accessibility, reliability, and quality for users. It is crucial for maintaining scientific rigor and research integrity.</li>
-            <li><b class="font-semibold"><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/policy-overview#:~:text=The%202023%20DMS%20Policy%20applies%20to%20all%20research%20funded%20or%20conducted%20in%20whole%20or%20in%20part%20by%20NIH%2C%20that%20results%20in%20the%20generation%20of%20scientific%20data.%C2%A0" class="text-blue-700 font-bold hover:underline" target="_blank">Scientific Data</a>:</b> The 2023 DMS Policy applies to all research funded or conducted in whole or in part by NIH, that results in the generation of scientific data. These are the results of research activities that are expected to be managed and shared. Examples include MRI images, genomic data, mobile data, and survey data. NIH does not expect all data to be shared, allowing researchers to decide based on ethical, legal, and technical factors.</li>
-            <li><b class="font-semibold"><a href="https://www.go-fair.org/fair-principles/" class="text-blue-700 font-bold hover:underline" target="_blank">FAIR Principles</a>:</b> NIH encourages data management and sharing practices to be consistent with these principles: Findable, Accessible, Interoperable, and Reusable. Adhering to FAIR principles facilitates computer processing and analysis of datasets for secondary research.</li>
+        <ul class="list-disc list-outside text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-4">
+            <li>
+                <b class="font-semibold">Data Management </b><a href="https://www.grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/data-management" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: This is the process of validating, organizing, protecting, maintaining, and processing scientific data to ensure its accessibility, reliability, and quality for users. It is crucial for maintaining scientific rigor and research integrity.
+            </li>
+            <li>
+                <b class="font-semibold">Scientific Data </b><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/policy-overview#:~:text=The%202023%20DMS%20Policy%20applies%20to%20all%20research%20funded%20or%20conducted%20in%20whole%20or%20in%20part%20by%20NIH%2C%20that%20results%20in%20the%20generation%20of%20scientific%20data.%C2%A0" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: The 2023 DMS Policy applies to all research funded or conducted in whole or in part by NIH, that results in the generation of scientific data. These are the results of research activities that are expected to be managed and shared. Examples include MRI images, genomic data, mobile data, and survey data. NIH does not expect all data to be shared, allowing researchers to decide based on ethical, legal, and technical factors.
+            </li>
+            <li>
+                <b class="font-semibold">FAIR Principles </b><a href="https://www.go-fair.org/fair-principles/" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: NIH encourages data management and sharing practices to be consistent with these principles: Findable, Accessible, Interoperable, and Reusable. Adhering to FAIR principles facilitates computer processing and analysis of datasets for secondary research.
+            </li>
         </ul>
 
         <h2 class="text-2xl font-bold text-blue-900 mt-6 mb-3">2. Core Requirements for a DMS Plan</h2>
-        <ul class="list-disc list-inside text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-4">
-            <li><b class="font-semibold"><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/policy-overview#:~:text=Submission%20%26%20Review%20of%20DMS%20Plans" class="text-blue-700 font-bold hover:underline" target="_blank">Submission</a>:</b> The DMS Plan must be attached as a PDF file in the "Other Plan(s)" field of the application forms (PHS 398 Research Plan or PHS 398 Career Development Award Supplemental Form).</li>
-            <li><b class="font-semibold"><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=Data%20Management%20and%20Sharing%20Plan%20Format" class="text-blue-700 font-bold hover:underline" target="_blank">Length and Format</a>:</b> DMS Plans are recommended to be two pages or less and must not include hypertext (e.g., hyperlinks and URLs).</li>
-            <li><b class="font-semibold"><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/budgeting-for-data-management-sharing" class="text-blue-700 font-bold hover:underline" target="_blank">Budget Justification</a>:</b> A brief summary of the DMS Plan and its associated costs must be included in the budget justification, labeled "Data Management and Sharing Justification". This justification should be no more than half a page and detail the data type, repository, general cost categories, amounts, and explanations.</li>
-            <ul class="list-disc list-inside text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-8">
-                <li>Allowable Costs: include curating data, developing documentation, formatting, de-identifying, preparing metadata, local data management, and repository deposit fees. All allowable costs must be incurred during the performance period, even if they cover preservation beyond the award period.</li>
-                <li>Unallowable Costs: include institutional overhead, routine research conduct costs (like collecting data), and double-charged costs.</li>
-            </ul>
-            <li><b class="font-semibold"><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/policy-overview#:~:text=Submission%20%26%20Review%20of%20DMS%20Plans" class="text-blue-700 font-bold hover:underline" target="_blank">Assessment and Compliance</a>:</b> NIH program staff assess DMS Plans for completeness and reasonableness; funding is contingent on a complete and acceptable plan. Peer reviewers may comment on the reasonableness of the budget but these comments will not impact the overall score. Compliance with the approved plan is monitored annually.</li>
+        <ul class="list-disc list-outside text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-4">
+            <li>
+                <b class="font-semibold">Submission </b><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/policy-overview#:~:text=Submission%20%26%20Review%20of%20DMS%20Plans" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: The DMS Plan must be attached as a PDF file in the "Other Plan(s)" field of the application forms (PHS 398 Research Plan or PHS 398 Career Development Award Supplemental Form).
+            </li>
+            <li>
+                <b class="font-semibold">Length and Format </b><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=Data%20Management%20and%20Sharing%20Plan%20Format" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: DMS Plans are recommended to be two pages or less and must not include hypertext (e.g., hyperlinks and URLs).
+            </li>
+            <li>
+                <b class="font-semibold">Budget Justification </b><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/budgeting-for-data-management-sharing" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: A brief summary of the DMS Plan and its associated costs must be included in the budget justification, labeled "Data Management and Sharing Justification". This justification should be no more than half a page and detail the data type, repository, general cost categories, amounts, and explanations.
+                <ul class="list-disc list-outside text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-4">
+                    <li>Allowable Costs: include curating data, developing documentation, formatting, de-identifying, preparing metadata, local data management, and repository deposit fees. All allowable costs must be incurred during the performance period, even if they cover preservation beyond the award period.</li>
+                    <li>Unallowable Costs: include institutional overhead, routine research conduct costs (like collecting data), and double-charged costs.</li>
+                </ul>
+            </li>
+            <li>
+                <b class="font-semibold">Assessment and Compliance </b><a href="https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/policy-overview#:~:text=Submission%20%26%20Review%20of%20DMS%20Plans" class="inline-flex items-center text-blue-700 hover:text-blue-800 icon-align" target="_blank"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: NIH program staff assess DMS Plans for completeness and reasonableness; funding is contingent on a complete and acceptable plan. Peer reviewers may comment on the reasonableness of the budget but these comments will not impact the overall score. Compliance with the approved plan is monitored annually.
+            </li>
         </ul>
         <p class="text-sm italic text-center text-gray-500 mt-4">
             Alaska INBRE is an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the National Institute of Health (NIH) under grant number P20GM103395.
