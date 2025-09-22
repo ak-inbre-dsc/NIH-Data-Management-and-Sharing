@@ -38,12 +38,31 @@
         .external-link-icon:hover {
             transform: scale(1.1);
         }
+        /* Hide elements when printing */
+        @media print {
+            .print-hidden,
+            .external-link-icon {
+                display: none;
+            }
+
+            .container {
+                max-width: 100%;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background-color: white;
+                color: black;
+            }
+        }
     </style>
 </head>
 <body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col items-center justify-center p-4">
     <div class="container bg-white shadow-xl rounded-2xl p-8 md:p-12 mt-8 mb-8">
         <!-- Header with Logos and Title -->
-        <div class="flex items-center justify-between gap-4 mb-6">
+        <div class="flex items-center justify-between gap-4 mb-6 print-hidden">
             <img src="assets/images/DSC_logo.png" alt="DSC Logo" class="h-36">
             <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 flex-grow text-center">
                 NIH Data Management and Sharing Plan Checklist
@@ -56,8 +75,13 @@
             <img src="assets/images/INBRE_logo.png" alt="INBRE Logo" class="h-36">
         </div>
         
+        <!-- Header for Print -->
+        <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 flex-grow text-center">
+            NIH Data Management and Sharing Plan Checklist
+        </h1>
+
         <!-- Main Content -->
-        <div class="text-base md:text-lg leading-relaxed text-gray-600">
+        <div class="text-base md:text-lg leading-relaxed text-gray-600 print-hidden">
             <p class="mb-4">
                 A Data Management and Sharing (DMS) Plan must contain the six elements below. A blank DMS format template can be downloaded <a href="https://grants.nih.gov/sites/default/files/uploaded/DMS-Plan-blank-format-page.docx" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">here</a>. For example DMS plans you can use the <a href="DMS_example_plans.html" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">DMS Example Plan Finder tool</a>. Please note that sample DMS Plans may include expectations beyond the general Data Management and Sharing Plan Policy. For common inquiries about DMS plans, see our <a href="nih_faq_app.html" target="_blank" class="text-blue-700 font-bold hover:text-blue-800">FAQ</a>.
             </p>
