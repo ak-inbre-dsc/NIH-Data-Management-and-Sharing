@@ -19,7 +19,7 @@ Simply visit the live website and use the checkboxes to track which elements of 
 ### Live Deployment
 
 This project is live and accessible via GitHub Pages at the following URL:
-<https://kgrond.github.io/NIH-Data-Management-and-Sharing/>
+<https://ak-inbre-dsc.github.io/NIH-Data-Management-and-Sharing/>
 
 ### Contributing  
 This repository is open for contributions. If you find any errors, have suggestions for new features, or want to improve the documentation, please feel free to open a pull request.
