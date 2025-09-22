@@ -6,6 +6,7 @@ The tool provides a clear, step-by-step guide based on the **six core elements**
 
 ### Features
 
+- **NIH Data Management General Definitions & Core Requirements**
 - **Interactive Checklist**: Track your progress through each of the six required elements.
 - **Sample Plan Finder Tool**: Find the appropriate example DMS plans based on your own research characteristics
 - **FAQ**
