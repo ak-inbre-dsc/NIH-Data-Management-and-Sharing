@@ -9,6 +9,11 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        .list-item-content {
+            display: inline-block;
+            vertical-align: top;
+            padding-left: 0.5rem; /* Add some space between bullet and text */
+        }
     </style>
 </head>
 <body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col items-center p-4">
@@ -30,17 +35,43 @@
         </p>
 
         <h3 class="text-2xl font-bold text-blue-900 mb-3">Features</h3>
-        <ul class="list-disc text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-8">
-            <li><b class="font-semibold">NIH Data Management General Definitions & Core Requirements </b><a href="DMS_guidelines_and_policies.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></li>
-            <li><b class="font-semibold">DMS Plan Element Checklist </b><a href="DMS_checklist.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: Track your progress through each of the six required elements.</li>
-            <li><b class="font-semibold">Example Plan Finder </b><a href="DMS_example_plans.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: Find the appropriate example DMS plans based on your own research characteristics.</li>
-            <li><b class="font-semibold">FAQ </b><a href="DMS_FAQ.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></li>
-            <li><b class="font-semibold">Direct Links</b>: Access official NIH documentation and example plans directly from the checklist.</li>
+        <ul class="list-disc text-base md:text-lg leading-relaxed text-gray-700 mb-6 space-y-2 pl-6">
+            <li class="flex items-start">
+                <span class="mr-2">&bull;</span>
+                <div class="flex-1">
+                    <b class="font-semibold">NIH Data Management General Definitions & Core Requirements</b><a href="DMS_guidelines_and_policies.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="mr-2">&bull;</span>
+                <div class="flex-1">
+                    <b class="font-semibold">DMS Plan Element Checklist</b><a href="DMS_checklist.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: Track your progress through each of the six required elements.
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="mr-2">&bull;</span>
+                <div class="flex-1">
+                    <b class="font-semibold">Example Plan Finder</b><a href="DMS_example_plans.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>: Find the appropriate example DMS plans based on your own research characteristics.
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="mr-2">&bull;</span>
+                <div class="flex-1">
+                    <b class="font-semibold">FAQ</b><a href="DMS_FAQ.html" target="_blank" class="inline-flex items-center text-blue-700 hover:text-blue-800"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>
+                </div>
+            </li>
+            <li class="flex items-start">
+                <span class="mr-2">&bull;</span>
+                <div class="flex-1">
+                    <b class="font-semibold">Direct Links</b>: Access official NIH documentation and example plans directly from the checklist.
+                </div>
+            </li>
         </ul>
         <h3 class="text-2xl font-bold text-blue-900 mb-3">Live Deployment</h3>
         <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6">
             This project is live and accessible via GitHub Pages at the following URL:
-            <a href="https://ak-inbre-dsc.github.io/NIH-Data-Management-and-Sharing/" class="text-blue-700 font-bold hover:underline" target="_blank">https://ak-inbre-dsc.github.io/NIH-Data-Management-and-Sharing/</a>
+            <a href="https://kgrond.github.io/NIH-Data-Management-and-Sharing/" class="text-blue-700 font-bold hover:underline" target="_blank">https://kgrond.github.io/NIH-Data-Management-and-Sharing/</a>
+        </p>
 
         <hr class="border-t border-gray-300 my-6">
 
