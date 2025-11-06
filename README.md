@@ -22,7 +22,7 @@ This project is live and accessible via GitHub Pages at the following URL:
 <https://ak-inbre-dsc.github.io/NIH-Data-Management-and-Sharing/>
 
 ### Contributing  
-This repository is open for contributions. If you find any errors, have suggestions for new features, or want to improve the documentation, please feel free to open a pull request.
+This repository is open for contributions. If you find any errors, have suggestions for new features, or want to improve the documentation, please feel free to open a pull request. 
 
 
  
