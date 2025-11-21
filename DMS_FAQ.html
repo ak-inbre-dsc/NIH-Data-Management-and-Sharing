@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIH Data Management and Sharing Plan FAQ</title>
+    <title>Data Management and Sharing Plan FAQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -34,14 +34,17 @@
     <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 md:p-10 relative">
         <!-- Logo and Header Section -->
         <div class="flex items-center justify-between gap-4 mb-6">
-            <img src="https://raw.githubusercontent.com/drownlab/dsc_workshop_2025/0d15c8fe8c083e5ce2f7320a3faf1f7e9d108aa5/assets/images/DSC_logo.png" alt="DSC Logo" class="h-24">
+            <img src="https://raw.githubusercontent.com/drownlab/dsc_workshop_2025/0d15c8fe8c083e5ce2f7320a3faf1f7e9d108aa5/assets/images/DSC_logo.png" alt="DSC Logo" class="h-32">
             <h1 class="flex-grow text-center flex flex-col items-center">
-                <span class="text-3xl md:text-4xl font-extrabold text-blue-900">NIH Data Management & Sharing Plan</span>
-                <span class="text-2xl md:text-3xl font-normal text-blue-900 mt-1">FAQ</span>
+                <span class="text-3xl md:text-4xl font-extrabold text-blue-900">Frequently Asked Questions</span>
             </h1>
             <img src="assets/images/INBRE_logo.png" alt="INBRE Logo" class="h-24">
         </div>
+        <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6">
+            FAQ compiled by the Alaska INBRE Data Science Core to assist researchers in understanding and complying with the NIH Data Management and Sharing (DMS) Policy effective January 25, 2023 (<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html" class="text-sm text-blue-600 hover:text-blue-800 underline font-bold" target="_blank">NOT-OD-21-013</a>). This resource addresses common questions about DMS Plan requirements, data sharing timelines, repository selection, privacy considerations, etc.
 
+            For the official NIH FAQ, see: <a href="https://grants.nih.gov/faqs#/data-management-and-sharing-policy.htm"class="text-sm text-blue-600 hover:text-blue-800 underline font-bold" target="_blank">NIH FAQ</a>
+        </p>
         <!-- Search Bar -->
         <div class="relative mb-6">
             <input type="search" id="search-input" placeholder="Search questions or keywords..."
@@ -52,8 +55,7 @@
                 </svg>
             </div>
         </div>
-
-        <!-- FAQ List Container -->
+          <!-- FAQ List Container -->
         <div id="faq-list" class="space-y-4">
             <!-- FAQ items will be dynamically generated here -->
         </div>
@@ -63,7 +65,7 @@
             <p>No results found for your search. Please try a different query.</p>
         </div>
     </div>
-
+    
     <script>
         // Use a self-invoking function to avoid global variables
         (function() {
@@ -220,5 +222,12 @@
             renderFaqs(faqData);
         })();
     </script>
+      </div>
+             </p>
+         <hr class="border-t border-gray-300 my-6">
+        <p class="text-sm italic text-center text-gray-500 mt-4">
+            Alaska INBRE is an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the National Institute of Health (NIH) under grant number P20GM103395. The content in this publication is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health.
+        </p>
+    </div>
 </body>
 </html>
