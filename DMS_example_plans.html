@@ -207,7 +207,7 @@
             </div>
             
             <div class="custom-dropdown" id="clinical-dropdown">
-                <label class="block text-sm font-medium text-gray-700">Clinical/Non-Clinical:</label>
+                <label class="block text-sm font-medium text-gray-700">Clinical/Non-Clinical/Biomedical:</label>
                 <div class="dropdown-header">
                     <span class="selected-items">All</span>
                     <span class="arrow">▼</span>
@@ -264,7 +264,7 @@
                         <tr>
                             <th>Subject Type</th>
                             <th>Institute</th>
-                            <th>Clinical/Non-Clinical</th>
+                            <th>Clinical/Non-Clinical/Biomedical</th>
                             <th>Research Area</th>
                             <th>Primary/Secondary Data Used</th>
                             <th>Data Type</th>
@@ -287,33 +287,33 @@
         (function() {
             // Hard-coded data mirroring the structure of your CSV and file paths
             const dmsPlans = [
-                { "Subject Type": "Human", "Institute": "NCI", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Social Science", "Primary/Secondary Data used": "Primary", "Data Type": "Image, Video, Survey", "Date": "Post-2023", "Link": "example_plans/NCI-Social-Media-Sample-DMS-Plan_0.pdf" },
-                { "Subject Type": "Human", "Institute": "NHGRI", "Clinical/Non-Clinical": "Clinical", "Research Area": "Social Science", "Primary/Secondary Data used": "Primary", "Data Type": "Survey", "Date": "Pre-2023", "Link": "example_plans/Survey-and-Interview-Data_Sample-DMS-Plan_05222023_1.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NHGRI", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/Human-Genomic-Data_NHGRI_Sample-DMS-Plan_v1.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NHGRI", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/Technology-Development_NHGRI_Sample-DMS-Plan_v1.pdf" },
-                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "EHR", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_EHR_Data_MS_Plan_Example_final.pdf" },
-                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Social Science, Public Health, Behavioral Science", "Primary/Secondary Data used": "Primary", "Data Type": "Survey, Interview", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Longitudinal_Restricted_Access_DMS_Plan_Example_final.pdf" },
-                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Social Science, Public Health", "Primary/Secondary Data used": "Secondary", "Data Type": "EHR", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Secondary_Data_DMS_Plan_Example_final.pdf" },
-                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Pre-2023", "Link": "example_plans/ExampleDMSPlan_Human_Clinicalgenomics_NIHFormatPage_v2.pdf" },
-                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Post-2023", "Link": "example_plans/NIA_DN_Clinical_Interventions_DMS_Plan_Example_final.pdf" },
-                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Secondary", "Data Type": "Image, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIA_DN_Secondary_data_analysis.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Behavioral Science", "Primary/Secondary Data used": "Primary", "Data Type": "Video, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Primate_Data_DMS_Plan_Example_final.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical": "Clinical", "Research Area": "Survey", "Primary/Secondary Data used": "Primary", "Data Type": "Physical activity, Survey", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Survey_Interview_Data_DM_%20Plan_Example_final.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Clinical Science, Neuroscience", "Primary/Secondary Data used": "Primary", "Data Type": "Video, Clinical test, Behavioral observations", "Date": "Post-2023", "Link": "example_plans/NIA_DN_animal_models_DMS_Plan_Example_final.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Drug Development", "Primary/Secondary Data used": "Primary", "Data Type": "Image, pharmacokinetic", "Date": "Post-2023", "Link": "example_plans/NIA_DN_Intellectual_Prop_DMS_Plan_Example.pdf" },
-                { "Subject Type": "Human", "Institute": "NICHD", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Social Science", "Primary/Secondary Data used": "Primary", "Data Type": "Survey, Interview", "Date": "Pre-2023", "Link": "example_plans/Example_DMS_Plan-Human-Survey-NIH_Format_Page_V2.pdf" },
-                { "Subject Type": "Human", "Institute": "NICHD", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Pre-2023", "Link": "example_plans/Example_DMS_Plan_Clinical-Trial-NIH_Format_Page.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NICHD", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Post-2023", "Link": "example_plans/NIA_DN_AD_Human_Genomic_DMS_Plan_Example_final.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NICHD", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/ExampleDMSPlan_NonHuman_Zebrafish_NIHFormatPage_v2.pdf" },
-                { "Subject Type": "Human", "Institute": "NIDDK", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Post-2023", "Link": "example_plans/PI-E01BNIDDKDMSPlanExampleClinical.pdf" },
-                { "Subject Type": "Human", "Institute": "NIDDK", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Secondary", "Data Type": "Image", "Date": "Post-2023", "Link": "example_plans/PI-E01DNIDDKDMSPlanExampleSecondaryAnalysis.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NIDDK", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing, Image", "Date": "Post-2023", "Link": "example_plans/PIE01ANIDDKDMSPlanExampleNonhumanBasicResearch.pdf" },
-                { "Subject Type": "Human", "Institute": "NIMH", "Clinical/Non-Clinical": "Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Post-2023", "Link": "example_plans/NIMH_Human-Genomic_Template_v3.pdf" },
-                { "Subject Type": "Human", "Institute": "NIMH", "Clinical/Non-Clinical": "Clinical", "Research Area": "Neuroscience", "Primary/Secondary Data used": "Secondary", "Data Type": "Image, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIMH_Secondary-Data-Analysis_Template_v3.pdf" },
-                { "Subject Type": "Human", "Institute": "NIMH", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Image, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIMH_Human MRI and Clinical Assessments_Template_v3.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "NIMH", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Cell, Sequencing", "Date": "Post-2023", "Link": "example_plans/NIMH_Mouse-Genomic-Template_v3.pdf" },
-                { "Subject Type": "Non-Human", "Institute": "OD, NHGRI", "Clinical/Non-Clinical": "Non-Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/Whole-Genome-Data-Fro-HeLa-Cell-Lines_ Sample-DMS-Plan.pdf" },
-                { "Subject Type": "Human", "Institute": "OD, NHGRI", "Clinical/Non-Clinical": "Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test, Genomics, Metabolomics", "Date": "Post-2023", "Link": "example_plans/final_DMSPlan_2023_Cu.pdf" }
+                { "Subject Type": "Human", "Institute": "NCI", "Clinical/Non-Clinical/Biomedical": "Non-Clinical", "Research Area": "Social Science", "Primary/Secondary Data used": "Primary", "Data Type": "Image, Video, Survey", "Date": "Post-2023", "Link": "example_plans/NCI-Social-Media-Sample-DMS-Plan_0.pdf" },
+                { "Subject Type": "Human", "Institute": "NHGRI", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Social Science", "Primary/Secondary Data used": "Primary", "Data Type": "Survey", "Date": "Pre-2023", "Link": "example_plans/Survey-and-Interview-Data_Sample-DMS-Plan_05222023_1.pdf" },
+                { "Subject Type": "Human", "Institute": "NHGRI", "Clinical/Non-Clinical/Biomedical": "Non-Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/Human-Genomic-Data_NHGRI_Sample-DMS-Plan_v1.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NHGRI", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/Technology-Development_NHGRI_Sample-DMS-Plan_v1.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "EHR", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_EHR_Data_MS_Plan_Example_final.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Social Science, Public Health, Behavioral Science", "Primary/Secondary Data used": "Primary", "Data Type": "Survey, Interview", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Longitudinal_Restricted_Access_DMS_Plan_Example_final.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Social Science, Public Health", "Primary/Secondary Data used": "Secondary", "Data Type": "EHR", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Secondary_Data_DMS_Plan_Example_final.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Pre-2023", "Link": "example_plans/ExampleDMSPlan_Human_Clinicalgenomics_NIHFormatPage_v2.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Post-2023", "Link": "example_plans/NIA_DN_Clinical_Interventions_DMS_Plan_Example_final.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Secondary", "Data Type": "Image, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIA_DN_Secondary_data_analysis.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Non-Clinical", "Research Area": "Behavioral Science", "Primary/Secondary Data used": "Primary", "Data Type": "Video, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Primate_Data_DMS_Plan_Example_final.pdf" },
+                { "Subject Type": "Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Survey", "Primary/Secondary Data used": "Primary", "Data Type": "Physical activity, Survey", "Date": "Post-2023", "Link": "example_plans/NIA_BSR_Survey_Interview_Data_DM_%20Plan_Example_final.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Clinical Science, Neuroscience", "Primary/Secondary Data used": "Primary", "Data Type": "Video, Clinical test, Behavioral observations", "Date": "Post-2023", "Link": "example_plans/NIA_DN_animal_models_DMS_Plan_Example_final.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NIA", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Drug Development", "Primary/Secondary Data used": "Primary", "Data Type": "Image, pharmacokinetic", "Date": "Post-2023", "Link": "example_plans/NIA_DN_Intellectual_Prop_DMS_Plan_Example.pdf" },
+                { "Subject Type": "Human", "Institute": "NICHD", "Clinical/Non-Clinical/Biomedical": "Non-Clinical", "Research Area": "Social Science", "Primary/Secondary Data used": "Primary", "Data Type": "Survey, Interview", "Date": "Pre-2023", "Link": "example_plans/Example_DMS_Plan-Human-Survey-NIH_Format_Page_V2.pdf" },
+                { "Subject Type": "Human", "Institute": "NICHD", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Pre-2023", "Link": "example_plans/Example_DMS_Plan_Clinical-Trial-NIH_Format_Page.pdf" },
+                { "Subject Type": "Human", "Institute": "NICHD", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Post-2023", "Link": "example_plans/NIA_DN_AD_Human_Genomic_DMS_Plan_Example_final.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NICHD", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/ExampleDMSPlan_NonHuman_Zebrafish_NIHFormatPage_v2.pdf" },
+                { "Subject Type": "Human", "Institute": "NIDDK", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test", "Date": "Post-2023", "Link": "example_plans/PI-E01BNIDDKDMSPlanExampleClinical.pdf" },
+                { "Subject Type": "Human", "Institute": "NIDDK", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Secondary", "Data Type": "Image", "Date": "Post-2023", "Link": "example_plans/PI-E01DNIDDKDMSPlanExampleSecondaryAnalysis.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NIDDK", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing, Image", "Date": "Post-2023", "Link": "example_plans/PIE01ANIDDKDMSPlanExampleNonhumanBasicResearch.pdf" },
+                { "Subject Type": "Human", "Institute": "NIMH", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Post-2023", "Link": "example_plans/NIMH_Human-Genomic_Template_v3.pdf" },
+                { "Subject Type": "Human", "Institute": "NIMH", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Neuroscience", "Primary/Secondary Data used": "Secondary", "Data Type": "Image, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIMH_Secondary-Data-Analysis_Template_v3.pdf" },
+                { "Subject Type": "Human", "Institute": "NIMH", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science", "Primary/Secondary Data used": "Primary", "Data Type": "Image, Clinical test", "Date": "Post-2023", "Link": "example_plans/NIMH_Human MRI and Clinical Assessments_Template_v3.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "NIMH", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Cell, Sequencing", "Date": "Post-2023", "Link": "example_plans/NIMH_Mouse-Genomic-Template_v3.pdf" },
+                { "Subject Type": "Non-Human", "Institute": "OD, NHGRI", "Clinical/Non-Clinical/Biomedical": "Biomedical", "Research Area": "Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Sequencing", "Date": "Pre-2023", "Link": "example_plans/Whole-Genome-Data-Fro-HeLa-Cell-Lines_ Sample-DMS-Plan.pdf" },
+                { "Subject Type": "Human", "Institute": "OD, NHGRI", "Clinical/Non-Clinical/Biomedical": "Clinical", "Research Area": "Clinical Science, Genomics", "Primary/Secondary Data used": "Primary", "Data Type": "Clinical test, Genomics, Metabolomics", "Date": "Post-2023", "Link": "example_plans/final_DMSPlan_2023_Cu.pdf" }
             ];
 
             // Dynamically generate the list of filter categories from the data
@@ -330,7 +330,7 @@
             const filterCategories = {
                 "Subject Type": getUniqueValues(dmsPlans, "Subject Type"),
                 "Institute": getUniqueValues(dmsPlans, "Institute"),
-                "Clinical/Non-Clinical": getUniqueValues(dmsPlans, "Clinical/Non-Clinical"),
+                "Clinical/Non-Clinical/Biomedical": getUniqueValues(dmsPlans, "Clinical/Non-Clinical/Biomedical"),
                 "Research Area": getUniqueValues(dmsPlans, "Research Area"),
                 "Primary/Secondary Data used": getUniqueValues(dmsPlans, "Primary/Secondary Data used"),
                 "Data Type": getUniqueValues(dmsPlans, "Data Type"),
@@ -341,7 +341,7 @@
             const dropdowns = {
                 "Subject Type": document.getElementById('subject-dropdown'),
                 "Institute": document.getElementById('institute-dropdown'),
-                "Clinical/Non-Clinical": document.getElementById('clinical-dropdown'),
+                "Clinical/Non-Clinical/Biomedical": document.getElementById('clinical-dropdown'),
                 "Research Area": document.getElementById('research-dropdown'),
                 "Primary/Secondary Data used": document.getElementById('psdata-dropdown'),
                 "Data Type": document.getElementById('datatype-dropdown'),
@@ -400,7 +400,7 @@
                         row.innerHTML = `
                             <td>${plan["Subject Type"]}</td>
                             <td>${plan.Institute}</td>
-                            <td>${plan["Clinical/Non-Clinical"]}</td>
+                            <td>${plan["Clinical/Non-Clinical/Biomedical"]}</td>
                             <td>${plan["Research Area"]}</td>
                             <td>${plan["Primary/Secondary Data used"]}</td>
                             <td>${plan["Data Type"]}</td>
@@ -430,7 +430,7 @@
 
                 filtered = filterByIntersection(filtered, "Subject Type", getSelectedValues('subject-dropdown'));
                 filtered = filterByIntersection(filtered, "Institute", getSelectedValues('institute-dropdown'));
-                filtered = filterByIntersection(filtered, "Clinical/Non-Clinical", getSelectedValues('clinical-dropdown'));
+                filtered = filterByIntersection(filtered, "Clinical/Non-Clinical/Biomedical", getSelectedValues('clinical-dropdown'));
                 filtered = filterByIntersection(filtered, "Research Area", getSelectedValues('research-dropdown'));
                 filtered = filterByIntersection(filtered, "Primary/Secondary Data used", getSelectedValues('psdata-dropdown'));
                 filtered = filterByIntersection(filtered, "Data Type", getSelectedValues('datatype-dropdown'));
@@ -500,7 +500,7 @@
                 // Populate dropdowns with the correct, explicitly defined categories
                 populateDropdown('subject-dropdown', "Subject Type");
                 populateDropdown('institute-dropdown', "Institute");
-                populateDropdown('clinical-dropdown', "Clinical/Non-Clinical");
+                populateDropdown('clinical-dropdown', "Clinical/Non-Clinical/Biomedical");
                 populateDropdown('research-dropdown', "Research Area");
                 populateDropdown('psdata-dropdown', "Primary/Secondary Data used");
                 populateDropdown('datatype-dropdown', "Data Type");

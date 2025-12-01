@@ -32,7 +32,6 @@
 <body class="p-6 md:p-12">
 
     <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6 md:p-10 relative">
-        <!-- Logo and Header Section -->
         <div class="flex items-center justify-between gap-4 mb-6">
             <img src="https://raw.githubusercontent.com/drownlab/dsc_workshop_2025/0d15c8fe8c083e5ce2f7320a3faf1f7e9d108aa5/assets/images/DSC_logo.png" alt="DSC Logo" class="h-32">
             <h1 class="flex-grow text-center flex flex-col items-center">
@@ -41,26 +40,22 @@
             <img src="assets/images/INBRE_logo.png" alt="INBRE Logo" class="h-24">
         </div>
         <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6">
-            FAQ compiled by the Alaska INBRE Data Science Core to assist researchers in understanding and complying with the NIH Data Management and Sharing (DMS) Policy effective January 25, 2023 (<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html" class="text-sm text-blue-600 hover:text-blue-800 underline font-bold" target="_blank">NOT-OD-21-013</a>). This resource addresses common questions about DMS Plan requirements, data sharing timelines, repository selection, privacy considerations, etc.
+            FAQ compiled by the Alaska INBRE Data Science Core to assist researchers in understanding and complying with the NIH Data Management and Sharing (DMS) Policy effective January 25, 2023 (<a href="https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html" class="text-blue-600 hover:text-blue-800 underline " target="_blank">NOT-OD-21-013</a>). This resource addresses common questions about DMS Plan requirements, data sharing timelines, repository selection, privacy considerations, etc.
 
-            For the official NIH FAQ, see: <a href="https://grants.nih.gov/faqs#/data-management-and-sharing-policy.htm"class="text-sm text-blue-600 hover:text-blue-800 underline font-bold" target="_blank">NIH FAQ</a>
+            For the official NIH FAQ, see: <a href="https://grants.nih.gov/faqs#/data-management-and-sharing-policy.htm"class="text-blue-600 hover:text-blue-800 underline " target="_blank">NIH FAQ</a>
         </p>
-        <!-- Search Bar -->
         <div class="relative mb-6">
             <input type="search" id="search-input" placeholder="Search questions or keywords..."
-                   class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow text-gray-700">
+                           class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow text-gray-700">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
             </div>
         </div>
-          <!-- FAQ List Container -->
-        <div id="faq-list" class="space-y-4">
-            <!-- FAQ items will be dynamically generated here -->
-        </div>
+          <div id="faq-list" class="space-y-4">
+            </div>
 
-        <!-- No Results Message -->
         <div id="no-results" class="hidden text-center text-gray-500 my-8">
             <p>No results found for your search. Please try a different query.</p>
         </div>
@@ -73,19 +68,19 @@
             const faqData = [
                 {
                     question: "What is the purpose of the NIH Data Management and Sharing (DMS) Policy, and when did it become effective?",
-                    answer: "The NIH Data Management and Sharing (DMS) Policy, effective January 25, 2023, requires researchers to plan for and share scientific data from NIH-funded projects. The policy aims to accelerate biomedical discoveries by increasing data transparency, reproducibility, and accessibility for the research community and the public. It applies to all research that generates scientific data, regardless of the funding mechanism."
+                    answer: "The NIH Data Management and Sharing (DMS) Policy, effective January 25, 2023 (<a href=\"https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">NOT-OD-21-013</a>), requires researchers to plan for and share scientific data from NIH-funded projects. The policy aims to accelerate biomedical discoveries by increasing data transparency, reproducibility, and accessibility for the research community and the public. It applies to all research that generates scientific data, regardless of the funding mechanism."
                 },
                 {
-                    question: "Who needs to submit a DMS Plan?",
+                    question: "Who is responsible for submitting the DMS Plan?",
                     answer: "The principal investigator (PI) or project director is responsible for submitting a DMS Plan as part of their grant application or contract proposal."
                 },
                 {
                     question: "Are there any exceptions to the DMS Plan requirement?",
-                    answer: "Yes, certain types of research, like training grants and fellowships that do not generate scientific data, are exempt. However, it's best to check with your specific NIH Institute or Center."
+                    answer: "Yes, certain types of research, like training grants and fellowships that do not generate scientific data, are exempt (see <a href=\"https://grants.nih.gov/sites/default/files/flmngr/List-of-Activity-Codes-Applicable-to-DMS-Policy.pdf\" class=\"text-blue-600 hover:text-blue-800 underline \" target=\"_blank\">NIH activity codes subject to the DMS Policy</a>). However, it's best to check with your specific NIH Institute or Center for exceptions or <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/other/ics-sharing-policies\" class=\" text-blue-600 hover:text-blue-800 underline \" target=\"_blank\">additional requirements</a>. To determine which NIH policies apply to your research, see the <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/which-policies-apply-to-my-research\" class=\"text-blue-600 hover:text-blue-800 underline \" target=\"_blank\">NIH Decision tool</a>"
                 },
                 {
-                    question: "What are the key components required in a Data Management and Sharing (DMS) Plan?",
-                    answer: `A comprehensive DMS Plan, which is a mandatory submission for all applicants planning to generate scientific data, must address six key elements:
+                    question: "What are the key components required in an NIH Data Management and Sharing (DMS) Plan?",
+                    answer: `A comprehensive DMS Plan, which is a mandatory submission for all applicants planning to generate scientific data, must address <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=Elements%20to%20Include%20in%20a%20Data%20Management%20and%20Sharing%20Plan\" class=\" text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">six key elements</a>:
                         <ol class="list-decimal list-inside space-y-1 mt-2">
                             <li><b>Data Type:</b> Summarize the types and amount of scientific data to be generated/used, specify which data will be preserved and shared, and explain the reasoning for any data not shared (ethical, legal, technical factors). Also, list associated metadata and documentation necessary for interpretation.</li>
                             <li><b>Related Tools, Software, and/or Code:</b> Indicate if specialized tools, software, or code are needed to access or manipulate the shared data for replication or reuse, and how they can be accessed.</li>
@@ -98,11 +93,11 @@
                 },
                 {
                     question: "How should investigators budget for Data Management and Sharing activities in their NIH grant applications?",
-                    answer: "Investigators can budget for data management and sharing costs, such as data curation, documentation, de-identification, and data deposit fees. These costs must be incurred within the project's performance period. Unallowable costs include institutional overhead and routine data collection. A brief justification summarizing the data, repository, and costs must be included in the budget justification attachment."
+                    answer: "Investigators can budget for data management and sharing costs, such as data curation, documentation, de-identification, and data deposit fees. These costs must be incurred within the project's performance period. Unallowable costs include institutional overhead and routine data collection. A brief justification summarizing the data, repository, and costs must be included in the budget justification attachment.(See <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/budgeting-for-data-management-sharing\" class=\"text-blue-600 hover:text-blue-800 underline \" target=\"_blank\">NIH Budgeting for Data Management & Sharing</a>)"
                 },
                 {
                     question: "What are the key considerations for selecting an appropriate data repository?",
-                    answer: `Selecting an appropriate data repository is crucial for ensuring data are Findable, Accessible, Interoperable, and Reusable (FAIR). When choosing a repository, researchers should consider factors such as data sensitivity, size, complexity, and anticipated volume of requests. Desired characteristics for all data repositories include:
+                    answer: `Selecting an appropriate data repository is crucial for ensuring data are Findable, Accessible, Interoperable, and Reusable (<a href=\"https://datascience.nih.gov/sites/default/files/NIH_Strategic_Plan_for_Data_Science_Final_508.pdf\" class=\"text-blue-600 hover:text-blue-800 underline \" target=\"_blank\">FAIR</a>). When <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/selecting-a-data-repository\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">choosing a repository</a>, researchers should consider factors such as data sensitivity, size, complexity, and anticipated volume of requests. Desired characteristics for all data repositories include:
                         <ul class="list-disc list-inside space-y-1 mt-2">
                             <li><b>Unique Persistent Identifiers:</b> Assigns citable DOIs or accession numbers.</li>
                             <li><b>Long-Term Sustainability:</b> Has a plan for long-term data management, integrity, and authenticity.</li>
@@ -117,15 +112,15 @@
                             <li><b>Provenance:</b> Records data origin, chain of custody, and modifications.</li>
                             <li><b>Retention Policy:</b> Has documented data retention policies.</li>
                         </ul>
-                        <p class="mt-2">For human data, additional considerations include: fidelity to consent, restricted use compliance (enforcing data use restrictions), privacy measures, a plan for data breaches, download controls, procedures for addressing violations, and a transparent request review process. NIH encourages using discipline or data-type-specific repositories first, or generalist/institutional repositories if a specialized one isn't available. Small datasets can sometimes be included as supplementary material for PubMed Central articles.</p>`
+                        <p class="mt-2">For <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/selecting-a-data-repository#:~:text=within%20the%20repository.-,Additional%20Considerations%20for%20Human%20Data,-When%20working%20with\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">human data</a>, additional considerations include: fidelity to consent, restricted use compliance (enforcing data use restrictions), privacy measures, a plan for data breaches, download controls, procedures for addressing violations, and a transparent request review process. NIH encourages using discipline or data-type-specific repositories first, or generalist/institutional repositories if a specialized one is not available. Small datasets can sometimes be included as supplementary material for PubMed Central articles.</p>`
                 },
                 {
                     question: "How long should data be preserved?",
-                    answer: "The NIH encourages data to be preserved for as long as it is useful to the scientific community, but at a minimum for the duration of the grant and for a reasonable period thereafter."
+                    answer: "The NIH encourages data to be preserved for as long as it is useful to the scientific community, but at a minimum for the duration of the grant and for a reasonable period thereafter. (See <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/data-sharing-approaches#:~:text=data%20sharing%20timelines.-,Data%20Preservation,-Researchers%20are%20encouraged\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">NIH data preservation</a>)"
                 },
                 {
                     question: "What are NIH's expectations regarding the timeliness of data sharing?",
-                    answer: `NIH expects scientific data to be made accessible as soon as possible to maximize its value and impact. Specifically, under the 2023 DMS Policy, scientific data must be shared by the earlier of these two timepoints:
+                    answer: `NIH expects scientific data to be made accessible as soon as possible to maximize its value and impact. Specifically, under the 2023 DMS Policy (<a href=\"https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html\" class=\"text-sm text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">NOT-OD-21-013</a>), scientific data must be shared by the earlier of these <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/data-sharing-approaches#:~:text=Timeliness%20of%20Data%20Sharing\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">two timepoints</a>:
                         <ol class="list-decimal list-inside space-y-1 mt-2">
                             <li><b>The time of an associated publication:</b> Data underlying peer-reviewed journal articles should be accessible no later than the date the article is first available in print or electronic format.</li>
                             <li><b>The end of the performance period:</b> Data underlying findings not disseminated through peer-reviewed articles should be shared by the end of the grant's performance period. If a no-cost extension is granted, sharing should occur by the end of the extended period.</li>
@@ -134,11 +129,11 @@
                 },
                 {
                     question: "What is the NIH Genomic Data Sharing (GDS) Policy, and how does it integrate with the DMS Policy?",
-                    answer: "The GDS Policy requires sharing of large-scale genomic data from NIH-funded research and has been harmonized with the new DMS Policy. This means a single plan must now satisfy both policies. Key requirements include providing an Institutional Certification for human data and timely submission to appropriate repositories."
+                    answer: "The <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/data-sharing-approaches#:~:text=Timeliness%20of%20Data%20Sharing\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">NIH GDS Policy</a> (<a href=\"https://grants.nih.gov/grants/guide/notice-files/NOT-OD-22-189.html\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">NOT-OD-22-189</a>) requires sharing of large-scale genomic data from NIH-funded research and has been harmonized with the new DMS Policy (<a href=\"https://grants.nih.gov/grants/guide/notice-files/NOT-OD-21-013.html\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">NOT-OD-21-013</a>). This means a single plan must now satisfy both policies. Key requirements include providing an Institutional Certification for human data and timely submission to appropriate repositories."
                 },
                 {
-                    question: "What are the critical privacy and confidentiality considerations when sharing human scientific data, especially genomic data?",
-                    answer: `Protecting the privacy and confidentiality of human research participants is a paramount concern in data sharing. Investigators, their institutions, and Institutional Review Boards (IRBs) are responsible for safeguarding participant rights and data confidentiality. Key considerations and strategies include:
+                    question: "What are the critical privacy and confidentiality considerations when sharing human scientific data, especially human genomic data?",
+                    answer: `Protecting the privacy and confidentiality of <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/data-sharing-approaches#:~:text=Sharing%20Data%20from%20Human%20Research%20Participants%C2%A0\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">human research participants </a> is a paramount concern in data sharing. Investigators, their institutions, and Institutional Review Boards (IRBs) are responsible for safeguarding participant rights and data confidentiality. Key considerations and strategies include:
                         <ul class="list-disc list-inside space-y-1 mt-2">
                             <li><b>Informed Consent:</b> Discussions about data sharing, potential risks, and mitigation strategies should be an integral part of the informed consent process with research participants. Promises not to share data should be made sparingly and with adequate justification.</li>
                             <li><b>De-identification:</b> Prior to sharing, direct and indirect identifiers must be removed from the data. Researchers should be particularly cautious with data from small geographic areas, rare populations, or linked datasets where re-identification risks are higher.</li>
@@ -146,7 +141,7 @@
                             <li><b>Controlled Access:</b> For datasets that cannot be broadly distributed due to privacy, security, or other reasons, sharing through controlled-access repositories (data enclaves) or systems that restrict access to eligible researchers is an appropriate approach.</li>
                             <li><b>Data Use Agreements:</b> For data shared under the auspices of the investigator or through controlled access, data use agreements should include conditions for protecting confidentiality, privacy, and prohibiting attempts at re-identification.</li>
                             <li><b>Clinical Trials and HIPAA:</b> Investigators conducting clinical trials must carefully assess privacy risks related to study design and data collection, describing these and mitigation approaches in the informed consent. Those subject to HIPAA must comply with its Privacy Rule requirements for Protected Health Information.</li>
-                            <li><b>Genomic Data-Specific Consent:</b> For large-scale human genomic data from specimens collected after January 25, 2015, explicit informed consent for future research use and broad data sharing is expected. For older specimens, data from de-identified cell lines or clinical specimens lacking broad consent may be accepted.</li>
+                            <li><b>Genomic Data-Specific Consent:</b> For large-scale <a href=\"https://grants.nih.gov/policy-and-compliance/policy-topics/sharing-policies/dms/writing-dms-plan#:~:text=the%20GDS%20Policy%3A-,For%20human%20genomic%20data,-%3A\" class=\"text-blue-600 hover:text-blue-800 underline\" target=\"_blank\">human genomic data</a> from specimens collected after January 25, 2015, explicit informed consent for future research use and broad data sharing is expected. For older specimens, data from de-identified cell lines or clinical specimens lacking broad consent may be accepted.</li>
                         </ul>`
                 },
                 {
@@ -222,9 +217,7 @@
             renderFaqs(faqData);
         })();
     </script>
-      </div>
-             </p>
-         <hr class="border-t border-gray-300 my-6">
+     <hr class="border-t border-gray-300 my-6">
         <p class="text-sm italic text-center text-gray-500 mt-4">
             Alaska INBRE is an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the National Institute of Health (NIH) under grant number P20GM103395. The content in this publication is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health.
         </p>
