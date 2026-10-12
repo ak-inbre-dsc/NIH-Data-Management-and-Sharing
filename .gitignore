@@ -12,4 +12,5 @@ DMS_checklist_v1.html
 # Ignore Mac OS specific files
 .DS_Store
 .Rproj.user
+.Rhistory
 
